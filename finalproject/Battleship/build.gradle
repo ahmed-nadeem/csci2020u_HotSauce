@@ -1,0 +1,22 @@
+group 'DOMNYK'
+version '0.1-DOMNYK'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+task buildClientJar(dependsOn: ':Client:jfxJar') {
+    doLast {
+        println 'Battleship client jar created'
+    }
+}
+
+task buildServerJar(dependsOn: ':Server:jfxJar') {
+    doLast {
+        println 'Battleship server jar created'
+    }
+}
