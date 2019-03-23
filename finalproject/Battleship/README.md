@@ -3,6 +3,7 @@ Repository Link: https://github.com/ahmed-nadeem/csci2020u_HotSauce/tree/master/
 
 ### Group Members:
 Ahmed Nadeem, Adunife Kizito Okoye, & Rutvik Desai
+
 *Each group member contributed equally to the project*
 
 ### Battleship
