@@ -2,9 +2,13 @@
 Repository Link: https://github.com/ahmed-nadeem/csci2020u_HotSauce/tree/master/finalproject/Battleship
 
 ### Group Members:
-Ahmed Nadeem, Adunife Kizito Okoye, & Rutvik Desai
+* Ahmed Nadeem: ahmed-nadeem
+* Adunife Kizito Okoye: kyzyto
+* Rutvik Desai: Rutvik7359
 
 *Each group member contributed equally to the project*
+
+We distributed the work evenly, Ahmed worked on the server code, Rutvik worked on the client code, & Kizito worked on the shared part of the code.
 
 ### Battleship
 
