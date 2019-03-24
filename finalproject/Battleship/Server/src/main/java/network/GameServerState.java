@@ -1,5 +1,6 @@
 package network;
 
+// creating the states for the game server
 public enum GameServerState {
     INIT_STATE,
     WAIT_FOR_SECOND_PLAYER,
