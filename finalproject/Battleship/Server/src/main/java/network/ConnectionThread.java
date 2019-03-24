@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.concurrent.ArrayBlockingQueue;
 
+// class for the connection thread
 public class ConnectionThread extends Thread {
     private int id;
     private ObjectOutputStream toClient;
@@ -19,7 +20,8 @@ public class ConnectionThread extends Thread {
     private ArrayBlockingQueue<Msg> gameMessages;
 
     private static final Logger logger = LogManager.getLogger("Server");
-
+    
+    // connection thread method
     ConnectionThread(int id, Socket clientSocket, ArrayBlockingQueue<Msg> gameMessages) {
         this.id = id;
         this.gameMessages = gameMessages;
@@ -32,7 +34,8 @@ public class ConnectionThread extends Thread {
             logger.error(e.getMessage());
         }
     }
-
+    
+    // writing to client
     void write(Msg msg) {
         try {
             toClient.writeObject(msg);
@@ -40,7 +43,7 @@ public class ConnectionThread extends Thread {
             logger.error("Exception during writing to client stream");
         }
     }
-
+    // closing client socket
     void closeSocket() {
         try {
             clientSocket.close();
@@ -48,7 +51,8 @@ public class ConnectionThread extends Thread {
             logger.info("Client socket closed");
         }
     }
-
+    
+    // executing thread
     @Override
     public void run() {
         logger.info("Thread started");
