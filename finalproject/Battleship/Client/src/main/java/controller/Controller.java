@@ -76,7 +76,7 @@ public class Controller {
         numOfShipsPlaced = 0;
     }
 
-    //Confirmation of server response 
+    //Confirmation of server response. 
     @FXML
     private void handleFinishedButtonFired() {
         Msg answer = new Msg(MsgType.SHIPS_PLACED, player.getPlayerId(), player.getPlayerMap());
