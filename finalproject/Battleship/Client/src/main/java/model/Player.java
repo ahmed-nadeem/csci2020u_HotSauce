@@ -1,4 +1,6 @@
-package model;
+//Player Class
+
+package model;              //Package for model class
 
 public class Player {
     private Map playerMap;
@@ -9,15 +11,15 @@ public class Player {
         this.playerId = playerId;
     }
 
-    public Map getPlayerMap() {
-        return playerMap;
+    public Map getPlayerMap() { 
+        return playerMap;                                   //Returns Player Map (Grid)     
     }
 
     public Integer getPlayerId() {
-        return playerId;
+        return playerId;                                    //Returns Player ID
     }
 
     public void setPlayerId(Integer playerId) {
-        this.playerId = playerId;
+        this.playerId = playerId;                           //Sets Player ID
     }
 }
