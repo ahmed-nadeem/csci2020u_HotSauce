@@ -7,13 +7,15 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+// creating the class for the game server
 public class GameServer extends Thread {
     private int port;
     private static final Logger logger = LogManager.getLogger("Server");
     private ConnectionsHandler connectionsHandler;
     private int numOfConnected;
     private ServerSocket serverSocket;
-
+    
+    // for handling the connection
     public GameServer(int portNumber) {
         port = portNumber;
         connectionsHandler = new ConnectionsHandler();
@@ -24,7 +26,8 @@ public class GameServer extends Thread {
             logger.warn("Exception during server creation");
         }
     }
-
+    
+    // for server running
     @Override
     public void run() {
         this.setName("GameServer Thread");
@@ -34,7 +37,7 @@ public class GameServer extends Thread {
         startServer();
     }
 
-
+    // for starting up the server
     public void startServer() {
         logger.info("Server listens on port: " + port);
 
@@ -51,7 +54,8 @@ public class GameServer extends Thread {
             logger.info(e.getMessage());
         }
     }
-
+    
+    // for closing the server
     public void closeServer() {
         try {
             connectionsHandler.stopConnectionsThreads();
