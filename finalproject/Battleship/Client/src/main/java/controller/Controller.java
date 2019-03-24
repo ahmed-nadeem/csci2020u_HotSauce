@@ -1,4 +1,4 @@
-//Controller class for managing Client end interface.
+//Controller class for managing Client end interface
 
 
 package controller;         //Package for controller class
