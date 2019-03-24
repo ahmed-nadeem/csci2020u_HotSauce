@@ -61,12 +61,8 @@ public final class ConnectionsHandler extends Thread {
             logger.info("Thread was interrupted while waiting for message to appear in blocking queue");
         }
     }
-
-    /**
-     * Handles message received from server
-     *
-     * @param clientMsg WAITING message doesn't need to be handled. It is here to completeness of all messages received by the server
-     */
+    
+    // handles message received from server
     public void handleMessage(Msg clientMsg) {
         switch (clientMsg.getMsgType()) {
             case ID_IS_SET:
@@ -85,7 +81,7 @@ public final class ConnectionsHandler extends Thread {
                 break;
         }
     }
-
+    // sends message
     private void send(Msg answer) {
         logger.info("Sending " + answer.getMsgType() + " to player with ID: " + answer.getPlayerID());
         connections.get(answer.getPlayerID()).write(answer);
@@ -123,7 +119,7 @@ public final class ConnectionsHandler extends Thread {
         } else {
             gameServerState = GameServerState.WAIT_FOR_MOVE;
 
-            // Random choose of first player
+            // Random choice of first player
             int firstPlayerId = new Random().nextInt(2);
             int secondPlayerId = (firstPlayerId + 1) % 2;
 
@@ -160,7 +156,7 @@ public final class ConnectionsHandler extends Thread {
             return;
         }
 
-        // GameServerState is WAIT_FOR_MOVE and it stays that way
+        // GameServerState is on WAIT_FOR_MOVE and it stays that way, for turn-based
         if (isHit) {
             answer = new Msg(MsgType.HIT_WAIT_FOR_MOVE, activePlayerId, coordinates);
             send(answer);
