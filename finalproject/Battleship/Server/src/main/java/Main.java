@@ -22,6 +22,7 @@ public class Main extends Application {
 
     private void initLayout() {
         try {
+            // loading FXML object
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ServerController.class.getResource("Server.fxml"));
             layout = loader.load();
@@ -29,9 +30,9 @@ public class Main extends Application {
             Scene scene = new Scene(layout);
             primaryStage.setScene(scene);
             primaryStage.show();
-
+            // creating instance of the ServerController
             ServerController controller = loader.getController();
-
+            // for closing the server
             scene.getWindow().setOnCloseRequest((WindowEvent event) -> {
                 controller.closeGameServer();
                 Platform.exit();
