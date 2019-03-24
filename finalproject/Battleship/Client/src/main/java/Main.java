@@ -1,3 +1,4 @@
+// Main function for Client 
 import controller.Controller;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -27,7 +28,7 @@ public class Main extends Application {
     private void initLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Controller.class.getResource("Client.fxml"));
+            loader.setLocation(Controller.class.getResource("Client.fxml"));        //loads Client.fxml file 
             layout = loader.load();
 
             Scene scene = new Scene(layout);
@@ -46,7 +47,8 @@ public class Main extends Application {
         }
     }
 
-    public static void main(String[] args) {
+    //Launch arguments(main function)
+    public static void main(String[] args) {                
         launch(args);
     }
 }
