@@ -1,4 +1,8 @@
-package controller;
+//Controller class for managing Client end interface.
+
+
+package controller;         //Package for controller class
+
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -18,46 +22,50 @@ import protocol.MsgType;
 import java.util.HashMap;
 
 public class Controller {
-    private static final Logger logger = LogManager.getLogger("Client");
-    private Player player;
-    private int shipLength;
-    private int currentNumOfFieldsTaken;
-    private int numOfShipsPlaced;
+    private static final Logger logger = LogManager.getLogger("Client");            //Method to find Client logger
+    private Player player;                                                          //Initiates Player
+    private int shipLength;                                                         //Initiates length of battleship    
+    private int currentNumOfFieldsTaken;                                            //Initiates number of squares taken in field
+    private int numOfShipsPlaced;                                                   //Initiates the total number of ships placed in field(MAX:5)
     private ConnectionHandler connectionHandler;
     private MsgHandler msgHandler;
 
-    public Controller() {
+    //Controller class for creating new player
+    public Controller() {                                           
         player = new Player(null);
     }
 
+    //Connection Handler returning Handler name
     ConnectionHandler getConnectionHandler() {
         return connectionHandler;
     }
 
     @FXML
-    private GridPane yourGrid;
+    private GridPane yourGrid;                  //Initializes Client Grid
 
     @FXML
-    private GridPane enemyGrid;
+    private GridPane enemyGrid;                 //Initializes Enemy Grid
 
     @FXML
-    private Label status;
+    private Label status;                       //Initializes Status of Connection
 
     @FXML
-    private TextField serverAddress;
+    private TextField serverAddress;            //Initializes Server Address
 
     @FXML
-    private TextField serverPort;
+    private TextField serverPort;               //Initializes Server Port
 
     @FXML
-    private Button connectButton;
+    private Button connectButton;               //Initializes connect button
 
     @FXML
-    private Button finishedButton;
+    private Button finishedButton;              //Initializes finished button
 
     @FXML
-    private MenuButton shipsMenuBar;
-
+    private MenuButton shipsMenuBar;            //Initializes Ship Menu Bar
+    
+    
+    //Initialization of variables to specific values
     @FXML
     private void initialize() {
         finishedButton.setDisable(true);
@@ -68,6 +76,7 @@ public class Controller {
         numOfShipsPlaced = 0;
     }
 
+    //Confirmation of server response 
     @FXML
     private void handleFinishedButtonFired() {
         Msg answer = new Msg(MsgType.SHIPS_PLACED, player.getPlayerId(), player.getPlayerMap());
@@ -78,6 +87,7 @@ public class Controller {
         setGridIsDisable(yourGrid, true);
     }
 
+    //Connection handler between port and Server Address
     @FXML
     private void handleConnectButtonFired() {
         serverAddress.setDisable(true);
@@ -94,6 +104,7 @@ public class Controller {
 
     ;
 
+    //Place Ships of length according to chosen from menu bar
     @FXML
     private void handleMenuItemSelected(ActionEvent event) {
         status.setText("Place ship");
@@ -107,6 +118,7 @@ public class Controller {
         shipLength = getShipLength(menuItem);
     }
 
+  
     @FXML
     private void handleEnemyGridCellButtonFired(ActionEvent event) {
         setGridIsDisable(enemyGrid, true);
@@ -207,13 +219,13 @@ public class Controller {
     }
 
     /**
-     * @param statusVal             Text which will appear in status TextField
-     * @param gridToUpdate          Grid which will be updated with a shot result
-     * @param gridToChangeIsDisable Grid which status will be changed to enable or prevent shooting
-     * @param newGridState          A value to which gridToChangeIsDisable will be changed
-     * @param color                 Color which will appear in cell of updated grid
-     * @param row                   Row of cell to update
-     * @param col                   Column of cell to update
+     statusVal             Text which will appear in status TextField
+     gridToUpdate          Grid which will be updated with a shot result
+     gridToChangeIsDisable Grid which status will be changed to enable or prevent shooting
+     newGridState          A value to which gridToChangeIsDisable will be changed
+     color                 Color which will appear in cell of updated grid
+     row                   Row of cell to update
+     col                   Column of cell to update
      */
     void updateGUI(String statusVal, GridPane gridToUpdate, GridPane gridToChangeIsDisable, boolean newGridState,
                    String color, Integer row, Integer col) {
