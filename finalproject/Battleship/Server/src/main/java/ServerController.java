@@ -5,9 +5,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import network.GameServer;
-import org.apache.logging.log4j.LogManager;
+
+import org.apache.logging.log4j.LogManager;         // importing dependencies to handle the logs from client and server
 import org.apache.logging.log4j.Logger;
 
+// creating a class that controls the server
 public class ServerController {
     private static final Logger logger = LogManager.getLogger("Server");
     private GameServer gs;
@@ -27,14 +29,16 @@ public class ServerController {
     @FXML
     private void initialize() {
     }
-
+    
+    // action event for when server button is clicked
     @FXML
     private void handleStartServerButtonClicked(ActionEvent event) {
         startServerButton.setDisable(true);
 
         String portNumberString = portNumber.getText();
         int port;
-
+        
+        // for valid port number
         try {
             port = Integer.parseInt(portNumberString);
         } catch (NumberFormatException e) {
@@ -47,7 +51,7 @@ public class ServerController {
         serverStatus.setText("Server is running");
         serverStatus.setFill(Paint.valueOf("Green"));
     }
-
+    // for closing game server
     void closeGameServer() {
         try {
             gs.closeServer();
