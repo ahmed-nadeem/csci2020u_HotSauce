@@ -28,7 +28,7 @@ The project was created as a gradle multi-project build, and the code was writte
 * Execute the server first, and then the client (create two instances of the client, for the two players)
 * Enter a port number for the server (a number after 1024), e.g. 4444, and then click "Start Server"
 * Enter the same host address for each client and the port number used in the server, e.g. 127.0.0.1 & 4444, and then click "Connect"
-* If succesful, players can start setting up their ships and playing against each other until someone wins
+* If successful, players can start setting up their ships and playing against each other until someone wins
 
 ##### Server
     ./gradlew buildServerJar
